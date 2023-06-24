@@ -10,7 +10,7 @@ const MyProfile = () => {
   const { data: session } = useSession();
 
   const router = useRouter();
-
+  //just a comment
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
