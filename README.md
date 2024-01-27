@@ -38,6 +38,6 @@ To get started with Promptopia, follow these simple steps:
 
 ## Contact
 
-For any questions, issues, or feedback, feel free to reach out to us at [avvickya@gmail.com].
+For any questions, issues, or feedback, feel free to reach out to me at [avvickya@gmail.com].
 
 Happy prompting!
