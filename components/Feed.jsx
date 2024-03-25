@@ -1,96 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-import PromptCard from "./PromptCard";
-
-const PromptCardList = ({ data, handleTagClick }) => {
-  return (
-    <div className="mt-16 prompt_layout">
-      {data.map((post) => (
-        <PromptCard
-          key={post._id}
-          post={post}
-          handleTagClick={handleTagClick}
-        />
-      ))}
-    </div>
-  );
-};
+import React, { useState } from "react";
 
 const Feed = () => {
-  const [allPosts, setAllPosts] = useState([]);
-
-  // Search states
-  const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(null);
-  const [searchedResults, setSearchedResults] = useState([]);
-
-  const filterPrompts = (searchtext) => {
-    const regex = RegExp(searchtext, "i");
-
-    return allPosts.filter(
-      (item) =>
-        regex.test(item.creator.username) ||
-        regex.test(item.tag) ||
-        regex.test(item.prompt)
-    );
-  };
-
-  const fetchPosts = async () => {
-    const response = await fetch("/api/prompt");
-    const data = await response.json();
-
-    setAllPosts(data);
-  };
-
-  const handleSearchChange = (e) => {
-    clearTimeout(searchTimeout);
-    setSearchText(e.target.value);
-
-    //debounce method implementation
-
-    setSearchTimeout(
-      setTimeout(() => {
-        const searchResults = filterPrompts(e.target.value);
-        setSearchedResults(searchResults);
-      }, 500)
-    );
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
-  const handleTagClick = (tagName) => {
-    setSearchText(tagName);
-
-    const searchResult = filterPrompts(tagName);
-    setSearchedResults(searchResult);
-  };
-
+  const [source, setSource] = useState("");
+  const [destination, setDestination] = useState("");
   return (
-    <section className="feed">
-      <form className="relative w-full flex-center">
-        <input
-          type="text"
-          placeholder="Search for a tag or username"
-          value={searchText}
-          onChange={handleSearchChange}
-          required
-          className="search_input peer"
-        />
-      </form>
-
-      {searchText ? (
-        <PromptCardList
-          data={searchedResults}
-          handleTagClick={handleTagClick}
-        />
-      ) : (
-        <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
-      )}
-    </section>
+    <div>
+      <input
+        value={source}
+        onChange={(e) => setSource(e.target.value)}
+        placeholder="Source"
+        required
+        className="form_input"
+      />
+      <input
+        value={destination}
+        onChange={(e) => setDestination(e.target.value)}
+        placeholder="Source"
+        required
+        className="form_input"
+      />
+    </div>
   );
 };
 
