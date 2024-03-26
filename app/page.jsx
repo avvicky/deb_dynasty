@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ChatBotNavigator from "@components/ChatBotNavigator";
 
 const Home = () => {
   const [source, setSource] = useState("");
@@ -27,7 +28,7 @@ const Home = () => {
                     className="search_input"
                     value={source}
                     onChange={(e) => setSource(e.target.value)}
-                    placeholder="Ex: someweher in earth"
+                    placeholder="Ex: somewhere in earth"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -45,8 +46,10 @@ const Home = () => {
               <div>
                 <Link
                   // className=" bg-black text-white rounded-md p-5 mt-12 "
-                  className="black_btn  "
-                  href="/result"
+                  className="black_btn"
+                  href={`/result?source=${encodeURIComponent(
+                    source
+                  )}&destination=${encodeURIComponent(dest)}`}
                 >
                   Find Routes
                 </Link>

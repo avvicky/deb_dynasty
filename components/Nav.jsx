@@ -35,13 +35,11 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="#" className="black_btn">
-              link1
+              Saved Routes
             </Link>
-
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
             </button>
-
             <Link href="/profile">
               <Image
                 src={session?.user.image}
@@ -68,7 +66,6 @@ const Nav = () => {
           </>
         )}
       </div>
-
       {/* Mobile Navigation */}
       <div className="sm:hidden flex relative">
         {session?.user ? (

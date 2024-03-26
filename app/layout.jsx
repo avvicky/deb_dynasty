@@ -2,6 +2,7 @@ import "@styles/globals.css";
 
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import ChatBot from "@components/Chatbot";
 
 export const metadata = {
   title: "Find'it",
@@ -20,6 +21,7 @@ const Rootlayout = ({ children }) => {
           <main className="app">
             <Nav />
             {children}
+            <ChatBot />
           </main>
         </Provider>
       </body>

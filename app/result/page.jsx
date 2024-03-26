@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import MapComponent from "../../components/MapComponent";
+// import GMapComponent from "@components/Map";
 
 function page() {
   const source = [51.505, -0.09]; // Coordinates for source
@@ -13,7 +14,7 @@ function page() {
 
   return (
     <div>
-      <h1>Map with Route</h1>
+      {/* <h1>Map with Route</h1> */}
       <MapComponent source={source} points={dire_points} destination={dest} />
     </div>
   );
